@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 # Faqat shu Telegram ID(lar) botdan foydalana oladi.
 # O'zingizning ID'ingizni @userinfobot orqali bilib oling va shu yerga yozing.
-ALLOWED_USER_IDS = set(604944814)  # bo'sh bo'lsa -- hammaga ochiq (ehtiyot bo'ling)
+ALLOWED_USER_IDS = {604944814}  # bo'sh bo'lsa -- hammaga ochiq (ehtiyot bo'ling)
 
 BOT_TOKEN = os.environ.get("8970584142:AAE9Ft1eh8-bXZWJvf7K5vaaqISM4_gArxI", "")
 
