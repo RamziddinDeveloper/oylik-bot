@@ -25,8 +25,7 @@ logger = logging.getLogger(__name__)
 # O'zingizning ID'ingizni @userinfobot orqali bilib oling va shu yerga yozing.
 ALLOWED_USER_IDS = {604944814}  # bo'sh bo'lsa -- hammaga ochiq (ehtiyot bo'ling)
 
-BOT_TOKEN = os.environ.get("8970584142:AAE9Ft1eh8-bXZWJvf7K5vaaqISM4_gArxI", "")
-
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 # Conversation state'lar
 (
     ADD_EMP_NAME,
