@@ -646,13 +646,29 @@ def main():
     application.add_handler(exc_conv)
 
     logger.info("Bot ishga tushdi...")
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+    application.run_polling(
+        allowed_updates=Update.ALL_TYPES,
+        poll_interval=2.0,
+        timeout=20,
+        drop_pending_updates=True,
+    )
 
 
 if __name__ == "__main__":
     import asyncio
-    try:
-        asyncio.get_event_loop()
-    except RuntimeError:
-        asyncio.set_event_loop(asyncio.new_event_loop())
-    main()
+    import time
+
+    while True:
+        try:
+            asyncio.set_event_loop(asyncio.new_event_loop())
+        except RuntimeError:
+            pass
+        try:
+            main()
+        except Exception as e:
+            logger.error(f"Bot to'xtadi, xatolik: {e}. 10 soniyadan keyin qayta urinadi...")
+            time.sleep(10)
+            continue
+        else:
+            # application.run_polling odatda faqat to'g'ridan-to'g'ri to'xtatilganda qaytadi
+            break
