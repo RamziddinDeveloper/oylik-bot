@@ -23,9 +23,10 @@ logger = logging.getLogger(__name__)
 
 # Faqat shu Telegram ID(lar) botdan foydalana oladi.
 # O'zingizning ID'ingizni @userinfobot orqali bilib oling va shu yerga yozing.
-ALLOWED_USER_IDS = {604944814}  # bo'sh bo'lsa -- hammaga ochiq (ehtiyot bo'ling)
+ALLOWED_USER_IDS = set()  # bo'sh bo'lsa -- hammaga ochiq (ehtiyot bo'ling)
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+
 # Conversation state'lar
 (
     ADD_EMP_NAME,
@@ -649,4 +650,9 @@ def main():
 
 
 if __name__ == "__main__":
+    import asyncio
+    try:
+        asyncio.get_event_loop()
+    except RuntimeError:
+        asyncio.set_event_loop(asyncio.new_event_loop())
     main()
